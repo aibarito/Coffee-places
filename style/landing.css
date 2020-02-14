@@ -1,0 +1,73 @@
+body{
+	background: black;
+}
+#landing-header{
+	z-index: 1;
+	position: relative;
+	text-align: center;
+	padding-top: 40vh;
+	
+}
+#landing-header h1{
+	color: white;
+}
+#slideshow{
+	height: 100%;
+	width: 100%;
+	list-style: none;
+	top: 0;
+	left: 0;
+	color: white;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+#slideshow li{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top:0;
+	left:0;
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	opacity: 0;
+	animation: imageAnimation 50s linear infinite;
+	
+}
+#slideshow li:nth-child(1){
+	background-image: url(https://i1.photo.2gis.com/images/branch/68/9570149245617901_8d1b.jpg);
+}
+#slideshow li:nth-child(2){
+	background-image: url(https://331mrnu3ylm2k3db3s1xd1hg-wpengine.netdna-ssl.com/wp-content/uploads/2015/12/Sprudge-TokiAmsterdam-KarinaHof-10Toki_exterior_window4Karina_Hof-740x494.jpg);
+	animation-delay:10s;
+}
+#slideshow li:nth-child(3){
+	background-image: url(https://i.ytimg.com/vi/kyvnngAEIpY/maxresdefault.jpg);
+	animation-delay:20s;
+}
+#slideshow li:nth-child(4){
+	background-image: url(https://images.unsplash.com/photo-1442975631115-c4f7b05b8a2c?ixlib=rb-1.2.1&w=1000&q=80);
+	animation-delay:30s;
+}
+#slideshow li:nth-child(5){
+	background-image: url(https://i1.wp.com/www.diegocoquillat.com/wp-content/uploads/2018/12/starbucks-coffe.jpg?resize=702%2C336&ssl=1);
+	animation-delay:40s;
+}
+
+@keyframes imageAnimation{
+	0%{
+		opacity: 0;
+		animation-timing-function: ease-in;
+	}
+	10%{
+		opacity: 1;
+		animation-timing-function: ease-out;
+	}
+	20%{
+		opacity: 1;
+	}
+	30%{
+		opacity: 0;
+	}
+}

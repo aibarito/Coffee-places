@@ -1,0 +1,56 @@
+<%- include("partials/header") %>
+
+<div class = "container">
+	<div class="jumbotron" style = "background: #DFD50F">
+		<h1 style = "color: #065B1B">Welcome to Caffee's page!</h1>
+		<p>Here you can find something for you</p>
+		<a class="btn btn-primary" href="/caffees/new">Add a new Caffee</a>
+	</div>
+	<!-- <div class="row" style = "display: flex; flex-wrap: wrap;"> -->
+	<div class = "text-center" style = "display: flex; flex-wrap: wrap;">
+		<% if(!noMatch){ %>
+			<div class = "col-md-12" id = "search">
+				<form class = "form-inline">
+					<div class = "form-group">
+						<input class = "form-control" type = "text" placeholder = "Caffee search..." name = "search" value = "<%= valueOfSearch %>"> 
+						<input class = "btn" type = "submit" placeholder = "Search">
+					</div>
+				</form>
+			</div>
+		<%}%>
+		<div class = "col-md-12">
+			<% if(noMatch){ %>
+			<div>
+				<div>
+					<h4>
+						<%= noMatch %>
+					</h4>
+				</div>
+				<p>
+					<form class = "form-inline">
+						<div class = "form-group">
+							<input class = "form-control" type = "text" placeholder = "Caffee search..." name = "search">
+							<input class = "btn" type = "submit" placeholder = "Search">
+						</div>
+					</form>
+				</p>
+			</div>
+			<%}%>
+		</div>
+		<% caffees.forEach(function(caffee){ %>
+			<div class="col-md-3 col-sm-6">
+				<div class="thumbnail" >
+					<img src ="<%= caffee.image %>"> 
+					<div class="caption">
+						<h6> <%= caffee.name %> </h6>
+					</div>
+					<a href = "/caffees/<%= caffee.id %>" class = "btn btn-primary">More Info</a>
+					
+				</div>
+			</div>
+		<% }) %>		
+	</div>
+</div>
+
+<%- include("partials/footer") %>
+ 

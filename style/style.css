@@ -1,0 +1,12 @@
+.img-responsive{
+	width: 100%
+}
+.thumbnail.second{
+	padding: 0;
+}
+#delete{
+	display: inline;
+}
+#search{
+	margin-bottom: 25px;
+}

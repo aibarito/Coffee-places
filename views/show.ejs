@@ -1,0 +1,105 @@
+<%- include("partials/header") %>
+<div class = "container">
+	<div class = "row">
+		<div class = "col-md-3">
+			<h2 class = "lead">
+				Caffee's
+			</h2>
+			<div class = " text-center thumbnail">
+				<h3>Recommended drink</h3>
+				<form action = "/caffees/<%= caffee.id %>/changecoffee" method = "POST">
+					<% if(caffee.bestcoffee.image || caffee.bestcoffee.name){%>
+						<button class = "btn btn-warning btn-xs">
+							change
+						</button>
+					<%}%>
+				</form>
+				<hr>
+				<form action = "/caffees/<%= caffee.id %>/suggested" method = "POST">
+					<div class = "form-group">
+						<% if(caffee.bestcoffee.image){%>
+							<img class = "col-md-12" style = "margin-bottom: 10px;" src = "<%= caffee.bestcoffee.image %>">
+						<%}else{%>
+							<input class = "form-control" style = "text-align: center; width: 70%; display: inline;" type = "text" placeholder = "image URL" name = "coffeeImage">
+						<%}%>
+					</div>
+					<div class = "form-group" >
+						<% if(caffee.bestcoffee.name){%>
+							<h4 class="text-center">
+								<%= caffee.bestcoffee.name %>
+							</h4>
+						<% }else{ %>
+ 							<input class = "form-control" style = "text-align: center; width: 70%; display: inline;" type = "text" name = "coffeeName" placeholder = "name of coffee">
+						<% } %>
+					</div>	
+					<% if(!caffee.bestcoffee.image || !caffee.bestcoffee.name){%>
+						<button class = "btn btn-info btn-sm">
+							suggest
+						</button>
+					<%}%>
+				</form>
+			</div>
+		</div>
+		<div class = "col-md-9">
+			<div class = "thumbnail second">
+				<img class="img-responsive" src = "<%= caffee.image%>" >
+				<div class = "caption">
+					<h4 class = "pull-right"><%= caffee.price %>$ is average coffee cost</h4>
+					<h4><a><%= caffee.name %></a></h4>
+				<% if(currentUser && caffee.author.id == currentUser.id){ %>
+					<div style = "margin-bottom: 7px">
+						<a class = "btn btn-warning btn-xs" href = "/caffees/<%= caffee.id%>/edit">Edit</a>
+						<form id = "delete" action = "/caffees/<%= caffee.id %>?_method=DELETE" method = "POST">
+							<button class = "btn btn-danger btn-xs">
+								Delete
+							</button>
+						</form>
+					</div>
+				<% } %>
+					<p><%= caffee.description %></p>
+					<p>
+						<strong>Place: <%= caffee.location %> </strong> 
+					</p>
+					<em>Created by: <a href = "/users/<%= caffee.author.id %>"><%=caffee.author.username %></a>, <%=caffee.createdAt.toDateString()%> </em>
+				</div>
+			</div>
+			<div class = "well">
+				<div class = "text-right">
+	<a class = "btn btn-large btn-success" href = "/caffees/<%= caffee.id %>/comments/new">Add a comment</a>
+				</div>
+				<hr>
+				<% caffee.comments.forEach(function(comment){%>
+					<div>
+						<p class = "pull-right"><%= moment(comment.createdAt).fromNow() %></p>
+						<strong><%= comment.author.name %> </strong> 
+
+					</div>
+					<p><%= comment.text %></p>
+					<% if(currentUser && comment.author.id == currentUser.id){%>
+						<a class = "btn btn-primary btn-xs" 
+					  	href = "/caffees/<%=caffee.id%>/comments/<%= comment.id %>/edit">
+							Update comment
+						</a>
+						<form id = "delete" 
+							  action = "/caffees/<%=caffee.id%>/comments/<%= comment.id %>?_method=DELETE" 	
+							  method = "POST">
+							<input type = "submit" class= "btn btn-danger btn-xs" value = "Delete">
+						</form>
+					<% } %>
+					
+				<% }) %>
+				
+			</div>
+
+
+
+
+			
+
+			<a href = "/caffees">Go Back</a>
+		</div>
+	</div>
+</div>
+
+
+<%- include("partials/footer") %>

@@ -1,0 +1,19 @@
+<%- include("partials/header") %>
+
+<div class="container">
+	<div class = "row">
+		<h1 style="text-align: center">
+			Add a Caffee
+		</h1>
+		<form action="/caffees" method="POST" style = "width: 500px; margin: 0 auto;">
+			<input style = "margin-bottom: 7px; margin-top: 20px" class = "form-control" type = "text" placeholder = "enter a name" name = "name">
+			<input style="margin-bottom: 7px; " class = "form-control" type = "text" placeholder = "enter a image url" name = "image">
+			<input style="margin-bottom: 7px; "class = "form-control" type = "text" placeholder = "location" name = "location" >
+			<input style="margin-bottom: 7px; " class = "form-control" type = "number" placeholder = "price of coffee" name = "price" min = 0.1 step = 0.1>
+			<input style="margin-bottom: 7px; " class = "form-control" type = "text" placeholder = "enter a description" name = "description">
+			<input class = "btn btn-lg btn-default btn-block" type = "submit">
+		</form>
+	</div>
+</div>
+	
+<%- include("partials/footer") %>

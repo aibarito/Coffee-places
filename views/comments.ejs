@@ -1,0 +1,15 @@
+<%- include("partials/header") %>
+
+<div class="container">
+
+	<h1 style="text-align: center">
+		Add a comment to <%= caffee.name %>
+	</h1>
+	<form action="/caffees/<%= caffee.id %>/comments" method="POST" style = "width: 500px; margin: 0 auto;">
+		<input style="margin-bottom: 7px; " class = "form-control" type = "text" placeholder = "enter a comment" name = "text">
+		<input class = "btn btn-lg btn-default btn-block" type = "submit">
+	</form>
+
+</div>
+	
+<%- include("partials/footer") %>

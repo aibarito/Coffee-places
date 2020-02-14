@@ -1,0 +1,33 @@
+<%- include("../partials/header") %>
+<div class = "container">
+	<div class = "row">
+		<div class = "col-md-8">
+			<div style = "width: 50%; margin: 25px auto;">
+				<div class = "thumbnail second">
+					<div style = "text-align: center; margin: 20px auto;">
+						<h2 >
+							<%= user.firstName %> <%= user.lastName %>
+						</h2>
+						<h5>
+							(Username: <%= user.username%>)
+						</h5>
+					</div>
+					<img src = "<%= user.avatar%>">
+				</div>	
+			</div>	
+		</div>
+		<div class = "col-md-4">
+			<div class = "container" style = "margin: 40px 0;">
+				<h4>
+					<%= user.firstName %>'s caffees:
+				</h4>
+				<ul>
+					<% caffees.forEach(function(caffee){ %>
+						<li><a href = "/caffees/<%= caffee.id %>"><%= caffee.name %></a></li>
+					<% }) %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<%- include("../partials/footer") %>

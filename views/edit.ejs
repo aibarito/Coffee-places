@@ -1,0 +1,19 @@
+<%- include("partials/header") %>
+
+<div class="container">
+
+	<h1 style="text-align: center">
+		Update a caffee
+	</h1>
+	<form action="/caffees/<%= thecaffee.id %>?_method=PUT" method="POST" style = "width: 500px; margin: 0 auto;">
+		<input style = "margin-bottom: 7px; margin-top: 20px" class = "form-control" type = "text" value = "<%= thecaffee.name %>" name = "caffee[name]">
+		<input style="margin-bottom: 7px; " class = "form-control" type = "text" value = "<%= thecaffee.image %> " name = "caffee[image]">
+		<input class = "form-control" type = "text" value = "<%= thecaffee.location %>" name = "caffee[location]">
+		<input style="margin-bottom: 7px; " class = "form-control" type = "number" value = "<%= thecaffee.price %> " name = "caffee[price]" min = 0.1 step = 0.1>
+		<input style="margin-bottom: 7px; " class = "form-control" type = "text" value = "<%= thecaffee.description %> " name = "caffee[description]">
+		<input class = "btn btn-lg btn-default btn-block" type = "submit">
+	</form>
+
+</div>
+	
+<%- include("partials/footer") %>
